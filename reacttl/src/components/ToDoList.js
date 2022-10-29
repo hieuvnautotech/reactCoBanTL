@@ -1,14 +1,14 @@
 import React from 'react'
 import ToDo from './ToDo'
 
-export default function ToDoList({toDoList}) {
+export default function ToDoList({toDoList, onCheckBtnClick}) {
   return (
-    <div>
+    <>
         {
             toDoList.map((todo) => (
-            <ToDo key={todo.id} todo={todo}/>
+            <ToDo key={todo.id} todo={todo} onCheckBtnClick={onCheckBtnClick}/>
             ))
         }
-    </div>
+    </>
   )
 }

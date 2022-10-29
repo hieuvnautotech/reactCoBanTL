@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from '@atlaskit/button';
 import styled, { css } from "styled-components";
+import CheckIcon from '@atlaskit/icon/glyph/check'
 
 const ButtonStyled = styled(Button)`
   margin-top: 5px;
@@ -31,12 +32,24 @@ const ButtonStyled = styled(Button)`
   }
 `;
 
-export default function ToDo({todo}) {
+export default function ToDo({todo, onCheckBtnClick}) {
   return (
-    <div>
-        <ButtonStyled shouldFitContainer>{todo.name}</ButtonStyled>
+    
+        <ButtonStyled 
+        isCompleted={todo.isCompleted}
+        shouldFitContainer
+        iconAfter={
+            !todo.isCompleted && (
+        <span className='check-icon' onClick={()=> onCheckBtnClick(todo.id)}>
+            <CheckIcon primaryColor='#4fff4f' />
+        </span>
+  )
+}
+        >
+            {todo.name}
+        </ButtonStyled>
         
 
-    </div>
+    
   )
 }
